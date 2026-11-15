@@ -674,7 +674,7 @@ const PLACE_ALIAS_MAP: PlaceAliasEntry[] = [
     key: 'basarikatte',
     labelEn: 'Basarikatte',
     labelKn: 'ಬಸರಿಕಟ್ಟೆ',
-    aliases: ['basarikatte', 'basrikatte', 'ಬಸರಿಕಟ್ಟೆ', 'ಬಸ್ರೀಕಟ್ಟೆ', 'ಬಸ್ರಿಕಟ್ಟೆ'],
+    aliases: ['basarikatte', 'basrikatte', 'ಬಸರಿಕಟ್ಟೆ', 'ಬಸ್ರೀಕಟ್ಟೆ'],
   },
   { key: 'aldur', labelEn: 'Aldur', labelKn: 'ಆಲ್ದೂರು', aliases: ['aldur', 'ಆಲ್ದೂರು'] },
   { key: 'balehole', labelEn: 'Balehole', labelKn: 'ಬಾಳೆಹೊಳೆ', aliases: ['balehole', 'ಬಾಳೆಹೊಳೆ'] },
@@ -685,7 +685,7 @@ const PLACE_ALIAS_MAP: PlaceAliasEntry[] = [
     key: 'moodubidri',
     labelEn: 'Moodubidri',
     labelKn: 'ಮೂಡುಬಿದ್ರೆ',
-    aliases: ['moodubidri', 'moodabidri', 'ಮೂಡುಬಿದ್ರೆ', 'ಮೂಡಬಿದ್ರೆ'],
+    aliases: ['moodubidri', 'moodabidri', 'ಮೂಡುಬಿದ್ರೆ'],
   },
   {
     key: 'kundapura',
@@ -796,26 +796,6 @@ const PLACE_ALIAS_MAP: PlaceAliasEntry[] = [
     aliases: ['murdeshwara', 'murudeshwar', 'ಮುರ್ಡೇಶ್ವರ'],
   },
   { key: 'joga', labelEn: 'Jog', labelKn: 'ಜೋಗ', aliases: ['joga', 'jog', 'ಜೋಗ'] },
-  {
-    key: 'davanagere',
-    labelEn: 'Davanagere',
-    labelKn: 'ದಾವಣಗೆರೆ',
-    aliases: ['davanagere', 'davangere', 'ದಾವಣಗೆರೆ'],
-  },
-  { key: 'kadur', labelEn: 'Kadur', labelKn: 'ಕಡೂರು', aliases: ['kadur', 'ಕಡೂರು'] },
-  { key: 'padubidri', labelEn: 'Padubidri', labelKn: 'ಪಡುಬಿದ್ರೆ', aliases: ['padubidri', 'ಪಡುಬಿದ್ರೆ'] },
-  {
-    key: 'brp',
-    labelEn: 'BRP',
-    labelKn: 'ಬಿ ಆರ್ ಪಿ',
-    aliases: ['brp', 'b.r.p', 'b r p', 'ಬಿ ಆರ್ ಪಿ', 'ಬಿ.ಆರ್.ಪಿ'],
-  },
-  {
-    key: 'umblebailu',
-    labelEn: 'Umblebailu',
-    labelKn: 'ಉಂಬಳೆಬೈಲು',
-    aliases: ['umblebailu', 'umblebail', 'ಉಂಬಳೆಬೈಲು', 'ಉಂಬಳೆಬೈಲ್'],
-  },
 ];
 
 function normalizeSearchToken(value: string): string {
@@ -1039,86 +1019,6 @@ function getOrderedRouteStages(place: BusPlaceSummary, route: BusRouteSchedule):
   };
 }
 
-// Maps a bus remark terminal/destination key -> intermediate stops that the bus passes through on its way there
-const REMARK_PASS_THROUGH_STOPS: Record<string, string[]> = {
-  davanagere: ['nrpura', 'shivamogga'],
-  mallanduru: ['nrpura', 'shivamogga'],
-  mandagadde: ['nrpura', 'shivamogga'],
-  shivamogga: ['nrpura', 'hariharapura', 'koppa', 'jayapura', 'balehonnur', 'thirthahalli'],
-  bengaluru: ['jayapura', 'balehonnur', 'aldur', 'chikkamagaluru', 'kadur', 'nrpura', 'bhadravathi', 'tarikere'],
-  mysuru: ['jayapura', 'balehonnur', 'aldur', 'chikkamagaluru'],
-  kadur: ['jayapura', 'balehonnur', 'aldur', 'chikkamagaluru'],
-  birur: ['nrpura', 'bhadravathi', 'umblebailu', 'brp', 'tarikere', 'ajjampura', 'jayapura', 'balehonnur', 'aldur', 'chikkamagaluru'],
-  ajjampura: ['nrpura', 'bhadravathi', 'umblebailu', 'brp', 'tarikere'],
-  tarikere: ['nrpura', 'bhadravathi', 'umblebailu', 'brp'],
-  brp: ['nrpura', 'bhadravathi', 'umblebailu'],
-  bhadravathi: ['nrpura', 'umblebailu'],
-  umblebailu: ['nrpura'],
-  chikkamagaluru: ['jayapura', 'balehonnur', 'aldur'],
-  aldur: ['jayapura', 'balehonnur'],
-  mangaluru: ['meguru', 'sringeri', 'karkala', 'moodubidri', 'padubidri', 'udupi'],
-  moodubidri: ['meguru', 'sringeri', 'karkala'],
-  padubidri: ['meguru', 'sringeri', 'karkala'],
-  karkala: ['meguru', 'sringeri'],
-  udupi: ['hariharapura', 'agumbe', 'hebri', 'balehonnur', 'sringeri'],
-  hebri: ['hariharapura', 'agumbe'],
-  agumbe: ['hariharapura'],
-  horanadu: ['jayapura', 'basarikatte', 'balehole', 'kalasa'],
-  kalasa: ['jayapura', 'basarikatte', 'balehole'],
-  kudremukh: ['kalasa'],
-  balehonnur: ['jayapura', 'melpal'],
-  basarikatte: ['jayapura'],
-  soraba: ['thirthahalli', 'sagara'],
-  sagara: ['thirthahalli'],
-};
-
-function extractRemarkPlaceKeys(remarks: string): string[] {
-  const norm = normalizeSearchToken(remarks);
-  if (!norm) return [];
-  const matched = new Set<string>();
-  for (const entry of PLACE_ALIAS_MAP) {
-    if (entry.aliases.some((alias) => norm.includes(normalizeSearchToken(alias)))) {
-      matched.add(entry.key);
-    }
-  }
-  return Array.from(matched);
-}
-
-function timingMatchesDestination(
-  remarks: string,
-  destQuery: ResolvedPlaceQuery,
-  destInStages: boolean
-): boolean {
-  const normRemarks = normalizeSearchToken(remarks);
-  const remarkKeys = extractRemarkPlaceKeys(remarks);
-
-  // If the bus has no location-specific remarks (e.g., blank or "Midnight service"),
-  // it runs the primary route corridor and reaches stops explicitly listed in the route stages.
-  if (remarkKeys.length === 0) {
-    return destInStages;
-  }
-
-  // If remarks explicitly mention the user's destination (canonical key or raw text), match it!
-  if (destQuery.key && remarkKeys.includes(destQuery.key)) {
-    return true;
-  }
-  if (destQuery.terms.some((term) => normRemarks.includes(term))) {
-    return true;
-  }
-
-  // Otherwise check if any place named in remarks continues beyond the user's destination along the same corridor.
-  if (destQuery.key) {
-    for (const rKey of remarkKeys) {
-      const passedStops = REMARK_PASS_THROUGH_STOPS[rKey];
-      if (passedStops && passedStops.includes(destQuery.key)) {
-        return true;
-      }
-    }
-  }
-
-  return false;
-}
-
 function findMatchingBusRoutes(
   cache: BusCacheStore,
   originEn: string,
@@ -1161,6 +1061,7 @@ function findMatchingBusRoutes(
   }
 
   const directMatches: BusAgentMatchedRoute[] = [];
+  const viaMatches: BusAgentMatchedRoute[] = [];
   const seenRouteIds = new Set<number>();
 
   for (const place of cache.places) {
@@ -1169,12 +1070,6 @@ function findMatchingBusRoutes(
       if (seenRouteIds.has(route.routeId) || route.timings.length === 0) continue;
 
       const parsed = getOrderedRouteStages(place, route);
-
-      // Strictly require route origin to match the user's entered departure place (no buses starting from other towns)
-      const timingOriginStr = `${parsed.fromPlaceEn} ${parsed.fromPlaceKn}`;
-      if (!textMatchesPlace(timingOriginStr, originQuery)) {
-        continue;
-      }
 
       // Find ordered stage indices for origin & destination
       let origIdx = -1;
@@ -1193,45 +1088,56 @@ function findMatchingBusRoutes(
 
       if (origIdx === -1) continue;
 
-      const destInStages = destIdx > origIdx;
+      // Connection notes / remarks only extend downstream from origin stage 0 or earlier stops
       const destInExtra = origIdx === 0 && textMatchesPlace(parsed.extraConnectionText, destQuery);
 
-      if (!destInStages && !destInExtra) continue;
-      if (destIdx !== -1 && destIdx <= origIdx) continue;
+      if (destIdx === -1 && !destInExtra) continue;
 
-      // Filter individual buses strictly to those actually going to destQuery and matching timePreference
+      // Enforce direction when both appear inside ordered stages
+      if (destIdx !== -1 && destIdx <= origIdx) {
+        continue;
+      }
+
+      // Determine whether timings depart directly from user's origin or an earlier hub
       const filteredTimings = route.timings.filter((t) => {
         if (timePreference !== 'all') {
           const period = getTime24HourBucket(t.departureTime24, t.departureTime);
           if (period !== timePreference) return false;
         }
-        const tOrigin = `${t.fromPlaceEn || parsed.fromPlaceEn} ${t.fromPlaceKn || parsed.fromPlaceKn}`;
-        if (!textMatchesPlace(tOrigin, originQuery)) {
-          return false;
-        }
-        return timingMatchesDestination(t.remarks || '', destQuery, destInStages);
+        return true;
       });
 
       if (filteredTimings.length === 0) continue;
 
+      const timingOriginStr = `${parsed.fromPlaceEn} ${parsed.fromPlaceKn}`;
+      const isDirectFromOrigin = textMatchesPlace(timingOriginStr, originQuery);
+
       seenRouteIds.add(route.routeId);
 
-      directMatches.push({
+      const entry: BusAgentMatchedRoute = {
         placeNameEn: place.nameEn,
         placeNameKn: place.nameKn,
         routeId: route.routeId,
         routeTitle: parsed.primaryTitle,
         routeSubtitle: parsed.secondarySubtitle || undefined,
-        fromPlaceLabel: `Departs from ${parsed.fromPlaceEn} → ${destQuery.labelEn}`,
-        matchType: 'direct',
+        fromPlaceLabel: isDirectFromOrigin
+          ? `Departs directly from ${parsed.fromPlaceEn}`
+          : `Starts at ${parsed.fromPlaceEn} · Passes via ${originQuery.label.split(' (')[0]}`,
+        matchType: isDirectFromOrigin ? 'direct' : 'via',
         timings: filteredTimings,
-      });
+      };
+
+      if (isDirectFromOrigin) {
+        directMatches.push(entry);
+      } else {
+        viaMatches.push(entry);
+      }
     }
   }
 
-  // Suggest connecting Malnad hubs if no direct buses exist
+  // Suggest connecting Malnad hubs if no direct or via buses exist
   const suggestedHubs: string[] = [];
-  if (directMatches.length === 0) {
+  if (directMatches.length === 0 && viaMatches.length === 0) {
     const candidateHubs = ['Koppa', 'Jayapura', 'Balehonnur', 'Sringeri', 'N.R. Pura', 'Thirthahalli'];
     for (const hubName of candidateHubs) {
       const hubQuery = resolvePlaceQuery(hubName);
@@ -1263,7 +1169,7 @@ function findMatchingBusRoutes(
   }
 
   return {
-    matchedRoutes: directMatches,
+    matchedRoutes: [...directMatches, ...viaMatches],
     suggestedHubs,
     originLabel: originQuery.label,
     destLabel: destQuery.label,
@@ -1600,7 +1506,13 @@ Rules:
         extracted.timePreference
       );
 
-      const totalBuses = matchedRoutes.reduce((sum, r) => sum + r.timings.length, 0);
+      const directCount = matchedRoutes
+        .filter((r) => r.matchType === 'direct')
+        .reduce((sum, r) => sum + r.timings.length, 0);
+      const viaCount = matchedRoutes
+        .filter((r) => r.matchType === 'via')
+        .reduce((sum, r) => sum + r.timings.length, 0);
+      const totalBuses = directCount + viaCount;
 
       const corrections: string[] = [];
       if (originAutoCorrected && directOrigin) {
@@ -1624,10 +1536,24 @@ Rules:
         };
         const periodKn = periodKnMap[extracted.timePreference];
 
+        const enParts: string[] = [];
+        const knParts: string[] = [];
+        if (directCount > 0) {
+          enParts.push(
+            `${directCount} direct departure${directCount === 1 ? '' : 's'} from ${originLabel}`
+          );
+          knParts.push(`${directCount} ನೇರ ಬಸ್‌ಗಳು`);
+        }
+        if (viaCount > 0) {
+          enParts.push(
+            `${viaCount} passing bus${viaCount === 1 ? '' : 'es'} via ${originLabel}`
+          );
+          knParts.push(`${viaCount} ಮಾರ್ಗಮಧ್ಯೆ ಬರುವ ಬಸ್‌ಗಳು`);
+        }
         replyText =
           correctionLine +
-          `Found ${totalBuses} direct bus${totalBuses === 1 ? '' : 'es'} from ${originLabel} to ${destLabel}${periodEn} across ${matchedRoutes.length} route${matchedRoutes.length === 1 ? '' : 's'}.\n` +
-          `${originLabel} ನಿಂದ ${destLabel} ಗೆ${periodKn} ${totalBuses} ನೇರ ಬಸ್‌ಗಳು (ಒಟ್ಟು ${matchedRoutes.length} ಮಾರ್ಗಗಳು) ಲಭ್ಯವಿವೆ.`;
+          `Found ${enParts.join(' and ')} to ${destLabel}${periodEn} across ${matchedRoutes.length} route${matchedRoutes.length === 1 ? '' : 's'}.\n` +
+          `${originLabel} ನಿಂದ ${destLabel} ಗೆ${periodKn} ${knParts.join(' ಮತ್ತು ')} (ಒಟ್ಟು ${matchedRoutes.length} ಮಾರ್ಗಗಳು) ಲಭ್ಯವಿವೆ.`;
       } else if (extracted.timePreference !== 'all') {
         replyText =
           correctionLine +
